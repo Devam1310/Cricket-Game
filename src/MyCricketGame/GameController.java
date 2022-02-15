@@ -71,10 +71,10 @@ public class GameController{
 
         while(overs<totOvers && curRuns<target && wicket<totWickets){
             System.out.println("Score of " + bat.teamName + " is : " + String.valueOf(curRuns)+ "/" + String.valueOf(wicket));
-            System.out.println(bat.teamPlayers[striker].playerName + " is on the strike");
+            System.out.println(bat.teamPlayers[striker].getPlayerName() + " is on the strike");
             int bowlerIndex=5 + (int)(Math.random() * ((10 - 5) + 1));
             bow.teamPlayers[bowlerIndex].overs+=1;
-            System.out.println(bow.teamPlayers[bowlerIndex].playerName + " is going to bowl over number : " + String.valueOf(overs+1));
+            System.out.println(bow.teamPlayers[bowlerIndex].getPlayerName() + " is going to bowl over number : " + String.valueOf(overs+1));
             for(int balls=0;balls<6;balls++){
                 bat.teamPlayers[striker].ballsFaced+=1;
                 Character result=ballResult();
@@ -89,10 +89,10 @@ public class GameController{
                 }else{
                     wicket+=1;
                     bow.teamPlayers[bowlerIndex].wickets+=1;
-                    System.out.println(bat.teamPlayers[striker].playerName + " is out for " + bat.teamPlayers[striker].runs + " runs.");
+                    System.out.println(bat.teamPlayers[striker].getPlayerName() + " is out for " + bat.teamPlayers[striker].runs + " runs.");
                     striker=newBatsman;
                     newBatsman+=1;
-                    if(wicket<10)System.out.println("New batsman is : " + bat.teamPlayers[striker].playerName);
+                    if(wicket<10)System.out.println("New batsman is : " + bat.teamPlayers[striker].getPlayerName());
                 }
                 if(wicket==10 || curRuns>target)break;
 
@@ -120,7 +120,7 @@ public class GameController{
         System.out.println("Perfomance of players of : "+ T.teamName);
         System.out.println("Player Name      Runs Balls Overs Wickets RunsGiven");
         for(int i=0;i<=10;i++){
-            System.out.println(T.teamPlayers[i].playerName + " " + String.valueOf(T.teamPlayers[i].runs) + " "
+            System.out.println(T.teamPlayers[i].getPlayerName() + " " + String.valueOf(T.teamPlayers[i].runs) + " "
                     + String.valueOf(T.teamPlayers[i].ballsFaced) + " " + String.valueOf(T.teamPlayers[i].overs) + " "
                     + String.valueOf(T.teamPlayers[i].wickets) + " " + String.valueOf(T.teamPlayers[i].runsGiven));
         }
