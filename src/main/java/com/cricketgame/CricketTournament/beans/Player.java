@@ -1,18 +1,58 @@
-package com.cricketgame.CricketTournament;
+package com.cricketgame.CricketTournament.beans;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
+import org.springframework.data.elasticsearch.annotations.Setting;
+
+@Document(indexName = "player_1")
+@Setting(settingPath = "static/es-settings.json")
 public class Player {
+
+  @Id
+  @Field(type = FieldType.Text)
+  private String playerId;
+
+  @Field(type = FieldType.Text)
   private String playerName;
+
+  @Field(type = FieldType.Text)
+  private String playerTeam;
+
+  @Field(type = FieldType.Text)
   private String playerRole;
+
+  @Field(type = FieldType.Integer)
+  private int totalMatchesPlayed = 0;
+
+  @Field(type = FieldType.Integer)
   private int runs = 0;
+
+  @Field(type = FieldType.Integer)
   private int wickets = 0;
+
+  @Field(type = FieldType.Integer)
   private int ballsFaced = 0;
+
+  @Field(type = FieldType.Integer)
   private int runsGiven = 0;
+
+  @Field(type = FieldType.Integer)
   private int overs = 0;
 
   public Player() {}
 
   public Player(String playerName) {
     this.playerName = playerName;
+  }
+
+  public String getPlayerId() {
+    return playerId;
+  }
+
+  public void setPlayerId(String playerId) {
+    this.playerId = playerId;
   }
 
   public void setPlayerName(String playerName) {
@@ -25,6 +65,26 @@ public class Player {
 
   public void setPlayerRole(String playerRole) {
     this.playerRole = playerRole;
+  }
+
+  public String getPlayerTeam() {
+    return playerTeam;
+  }
+
+  public void setPlayerTeam(String playerTeam) {
+    this.playerTeam = playerTeam;
+  }
+
+  public int getTotalMatchesPlayed() {
+    return totalMatchesPlayed;
+  }
+
+  public void setTotalMatchesPlayed(int totalMatchesPlayed) {
+    this.totalMatchesPlayed = totalMatchesPlayed;
+  }
+
+  public void incrementTotalMatchesPlayed(int totalMatchesPlayed) {
+    this.totalMatchesPlayed += totalMatchesPlayed;
   }
 
   public int getRuns() {
